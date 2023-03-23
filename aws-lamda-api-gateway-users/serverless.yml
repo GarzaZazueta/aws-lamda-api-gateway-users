@@ -1,0 +1,103 @@
+service: aws-lamda-api-gateway-users
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+
+functions:
+
+  valida_credenciales:
+    handler: lamda_functions/usuarios.valida_credenciales
+    events:
+      - httpApi:
+          path: /valida_credenciales
+          method: get
+          
+  obtiene_usuario:
+    handler: lamda_functions/usuarios.obtiene_usuario
+    events:
+      - httpApi:
+          path: /obtiene_usuario
+          method: get
+
+  get_info_exportar:
+    handler: lamda_functions/usuarios.get_info_exportar
+    events:
+      - httpApi:
+          path: /get_info_exportar
+          method: get
+
+  baja_usuarios:
+    handler: lamda_functions/usuarios.baja_usuarios
+    events:
+      - httpApi:
+          path: /baja_usuarios
+          method: delete
+             
+  actualiza_usuarios:
+    handler: lamda_functions/usuarios.actualiza_usuarios
+    events:
+      - httpApi:
+          path: /actualiza_usuarios
+          method: put
+
+  obtiene_persona:
+    handler: lamda_functions/persona.obtiene_persona
+    events:
+      - httpApi:
+          path: /obtiene_persona
+          method: get
+
+  alta_persona:
+    handler: lamda_functions/persona.alta_persona
+    events:
+      - httpApi:
+          path: /alta_persona
+          method: post
+
+  baja_persona:
+    handler: lamda_functions/persona.baja_persona
+    events:
+      - httpApi:
+          path: /baja_persona
+          method: delete
+
+  actualiza_persona:
+    handler: lamda_functions/persona.actualiza_persona
+    events:
+      - httpApi:
+          path: /actualiza_persona
+          method: put
+    
+  obtiene_beneficiario:
+    handler: lamda_functions/beneficiario.obtiene_beneficiario
+    events:
+      - httpApi:
+          path: /obtiene_beneficiario
+          method: get
+          
+  alta_beneficiario:
+    handler: lamda_functions/beneficiario.alta_beneficiario
+    events:
+      - httpApi:
+          path: /alta_beneficiario
+          method: post
+
+  elimina_beneficiario:
+    handler: lamda_functions/beneficiario.elimina_beneficiario
+    events:
+      - httpApi:
+          path: /elimina_beneficiario
+          method: delete
+  
+  actualiza_beneficiario:
+    handler: lamda_functions/beneficiario.actualiza_beneficiario
+    events:
+      - httpApi:
+          path: /actualiza_beneficiario
+          method: put
+
+
+  
